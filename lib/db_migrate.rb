@@ -23,6 +23,8 @@ class CreateDVDsTable < ActiveRecord::Migration
 			t.string :status
 			t.string :sound
 			t.string :versions
+			t.string :price
+			t.string :rating
 			t.string :year
 			t.string :genre
 			t.string :aspect
