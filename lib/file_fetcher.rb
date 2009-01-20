@@ -5,6 +5,7 @@ require 'zip/zipfilesystem'
 @address = ARGV[0]
 #default value unless alternate is specified on the command line
 @address ||= 'http://www.hometheaterinfo.com/download/dvd_csv.zip'
+@file_name = @address.split('/').last
 
 def download_file
 	#split file path on / characters and check to see if http:// was entered
@@ -23,10 +24,12 @@ def download_file
   	path << '/'
   	path << url_array[x]
 	end
+
 	puts "Downloading the file..."
+	#begin downloading the file
 	Net::HTTP.start(domain) do |http|
   	resp = http.get(path)
-  	open(@address.split("/").last, "wb") do |file|
+  	open(@file_name, "wb") do |file|
   	  file.write(resp.body)
   	end
 	end
@@ -47,9 +50,9 @@ def unzip(source_file, target_dir)
 end
 
 def cleanup
-	FileUtils.rm(@address.split("/").last)
+	FileUtils.rm(@file_name)
 end
 
 download_file
-unzip(@address.split("/").last, "../dvd")
+unzip(@file_name, "../dvd")
 cleanup
