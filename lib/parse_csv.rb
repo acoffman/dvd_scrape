@@ -24,4 +24,3 @@ end
 
 parse("../dvd/new_csv.txt")
 
-
