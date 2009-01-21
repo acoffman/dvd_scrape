@@ -7,9 +7,8 @@ target = ARGV[1]
 address ||= 'http://www.hometheaterinfo.com/download/dvd_csv.zip'
 target  ||= '../dvd/'
 
-if not ARGV[2] == nil
-	filename = target + ARGV[2]
-
+filename = target + ARGV[2] if not ARGV[2] == nil
+	
 filename ||= target + "dvd_csv.txt"
 
 fetcher = FileFetcher.new(address, target)
@@ -21,3 +20,4 @@ fetcher.cleanup
 parser = Parser.new(filename)
 
 parser.parse
+

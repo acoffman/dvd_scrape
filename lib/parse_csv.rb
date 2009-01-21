@@ -14,12 +14,12 @@ end
 
 class Parser
 
-	def intialize(filename)
+	def initialize(filename)
 		@filename = filename
 	end
 
 	def parse
-		puts "Parsing #{filename} and saving entries to the databse."
+		puts "Parsing #{@filename} and saving entries to the databse."
 		CSV::Reader.parse(File.open(@filename,'rb')) do |curr_row|
 			cur_dvd = DVD.new
 			cur_dvd.title, cur_dvd.studio, cur_dvd.released, cur_dvd.status, cur_dvd.sound,
