@@ -39,4 +39,4 @@ class CreateDVDsTable < ActiveRecord::Migration
 
 end
 
-CreateDVDsTable.migrate(:up)
+#CreateDVDsTable.migrate(:up)

@@ -20,7 +20,7 @@ class FileFetcher
 		end
  
 		#now that we have the domain, rebuild the path to the file
-		path = ""
+		@path = ""
 		start_count.upto(url_array.length() -1) do |x|
   		@path << '/'
   		@path << url_array[x]
@@ -28,8 +28,8 @@ class FileFetcher
 	end
 
 
-	def download_file
-		puts "Downloading the file..."
+	def download
+		puts "Downloading #{@file_name}"
 		#begin downloading the file
 		Net::HTTP.start(@domain) do |http|
   		response = http.get(@path)
@@ -37,11 +37,12 @@ class FileFetcher
   	  	file.write(response.body)
   		end
 		end
-		puts "Download complete"
+		puts "Download complete."
 	end
 
 
 	def unzip
+		puts "Unzipping #{@file_name}."
 		Dir.mkdir @target_dir if not File.exists? @target_dir
 	
 		Zip::ZipFile.open(@file_name) do |zip|
@@ -52,14 +53,16 @@ class FileFetcher
 			end
 		end
 		rescue Zip::ZipDestinationFileExistsError => ex
+		puts "Unzipping complete."
 	end
 
 
 	def cleanup
+		puts "Cleaning up."
 		FileUtils.rm(@file_name)
+		puts "Cleanup complete."
 	end
 
 	attr_accessor :file_name, :address
 
 end
-#@address ||= 'http://www.hometheaterinfo.com/download/dvd_csv.zip'
