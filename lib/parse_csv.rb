@@ -12,7 +12,7 @@ class Parser
 	end
 
 	def parse
-		puts "Parsing #{@filename} and saving entries to the databse."
+		puts "Parsing #{@filename.split("/").last} and saving entries to the databse."
 		CSV::Reader.parse(File.open(@filename,'rb')) do |curr_row|
 			cur_dvd = DB_Functions::DVD.new
 			#yes I know this line is ugly, I need to work on a cleaner way of doing this
