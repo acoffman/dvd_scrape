@@ -3,14 +3,9 @@
 
 require 'rubygems'
 require 'activerecord'
+require 'db_module.rb'
 
-#connect to the mysql database we're going to use
-ActiveRecord::Base.establish_connection({
-	:adapter => 'mysql',
-	:username => 'root',
-	:database => 'dvd_parse'
-})
-
+DB_Functions.connect
 
 #initial migration to create our table
 class CreateDVDsTable < ActiveRecord::Migration
