@@ -2,7 +2,6 @@
 #dvd_parse database, it should only need to be run once
 
 require 'rubygems'
-require 'activerecord'
 require 'db_module.rb'
 
 DB_Functions.connect
