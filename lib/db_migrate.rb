@@ -24,6 +24,7 @@ class CreateDVDsTable < ActiveRecord::Migration
 			t.string :aspect
 			t.string :upc
 			t.string :dvd_release
+			t.boolean :has_art, :default => false
 		end
 	end
 

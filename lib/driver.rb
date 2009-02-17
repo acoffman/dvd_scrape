@@ -1,5 +1,6 @@
 require 'file_fetcher.rb'
 require 'parse_csv.rb'
+require 'cover_fetcher.rb'
 
 #All arguments are optional, and default values will be assigned if need be.
 #First argument: The URL of the zip file
@@ -14,7 +15,7 @@ target  ||= '../dvd/'
 
 filename = target + ARGV[2] if not ARGV[2] == nil
 	
-filename ||= target + "dvd_csv.txt"
+filename ||= target + "new_csv.txt"
 
 fetcher = FileFetcher.new(address, target)
 
@@ -26,3 +27,5 @@ parser = Parser.new(filename)
 
 parser.parse
 
+cover_fetcher = Cover_Fetcher.new
+cover_fetcher.fetch_all

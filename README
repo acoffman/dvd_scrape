@@ -1,6 +1,15 @@
-This project is part of a larger one that I hope to complete someday.
+This is part of a larger project that I hope to complete someday. As it stands, 
+this script will pull a ZIP file from the web and unzip it. It then parses the 
+CSV file inside into a mysql database using ActiveRecord. The script then cycles through
+the database and scrapes Amazon for cover art for each DVD.
 
-This script will pull a CSV file containing DVD information from the web, parse and
-save it to a database, and then scrape the web for cover art for each dvd.
+The script "works" in the sense that it does everything that it is supposed to and 
+won't crash. It is not optimized, tested very thouroughly or refactored much at all.
 
-I hope to finish it over break. 
+When I have some additional time, all of those things will get done, and I plan on writing
+some RSpec tests for it as well (I know thats out of order!) 
+
+The script is also very slow, it will take hours to run the large CSV file (about 400,000 values)
+The download, unzip, parsing, and database creation are fairly fast, taking about 7 minutes for the whole process
+on the large file. Fetching the artwork for the DVDs is the bottleneck, taking several seconds per DVD.
+

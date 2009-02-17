@@ -28,12 +28,12 @@ class FileFetcher
 	end
 
 
-	def download
+	def download(local_filename = @file_name)
 		puts "Downloading #{@file_name}"
 		#begin downloading the file
 		Net::HTTP.start(@domain) do |http|
   		response = http.get(@path)
-  		open(@file_name, "wb") do |file|
+  		open(local_filename, "wb") do |file|
   	  	file.write(response.body)
   		end
 		end
